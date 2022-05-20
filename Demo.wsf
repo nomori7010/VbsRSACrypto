@@ -1,0 +1,27 @@
+<job>
+  <script language="VBScript" src="Class/RSACrypto.vbs"/>
+  <script language="VBScript">
+    Set fs = CreateObject("Scripting.FilesystemObject")
+    Set rsa = new RSACrypto
+    'pem形式の鍵を生成したらこちらのサイトでXMLに変換して変数にセットする
+    'https://superdry.apphb.com/tools/online-rsa-key-converter
+    
+    Set ts = fs.OpenTextFile("PrivateKey.xml")
+    rsa.XmlPrivateKey = ts.ReadAll
+    Set ts = fs.OpenTextFile("PublicKey.xml")
+    rsa.XmlPublicKey = ts.ReadAll
+    
+    WScript.Echo "KeyExchangeAlgorithm: " & rsa.KeyExchangeAlgorithm
+    WScript.Echo "KeySize: " & rsa.KeySize
+    WScript.Echo "PersistKeyInCsp: " & rsa.PersistKeyInCsp
+    WScript.Echo "SignatureAlgorithm: " & rsa.SignatureAlgorithm
+
+    DataToEncrypt = "Hello World"
+    WScript.Echo "DataToEncrypt: " & DataToEncrypt
+    XmlPublicKey = "<RSAKeyValue><Modulus>yPkX/xsEACRUk/9JwiOW4YjuhzafVD95AUS3hGV8SUKMk2Z4kPbNwDFlZjomlWH8Rknmui7/4u5rFlO4kPUPeYukQ7PBA4irCn/k9vPGcxGycxINWX2XdXSbP+hrpStrXyeRpf9PO9Aiv4OgOzcFbusAYUmzG1dN1hxS2GkAU7U=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>"
+    strEncryptValue = rsa.Encrypt(DataToEncrypt, False)
+    WScript.Echo "Encrypted: " & strEncryptValue
+    strDecryptValue = rsa.Decrypt(strEncryptValue, False)
+    WScript.Echo "Decrypted: " & strDecryptValue
+  </script>
+</job>

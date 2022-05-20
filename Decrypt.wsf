@@ -1,0 +1,15 @@
+<job>
+  <script language="VBScript" src="Class/RSACrypto.vbs"/>
+  <script language="VBScript">
+    Set fs = CreateObject("Scripting.FilesystemObject")
+    Set ts = fs.OpenTextFile("PrivateKey.xml")
+    Set rsa = new RSACrypto
+    rsa.XmlPrivateKey = ts.ReadAll
+
+    Set objArgs = WScript.Arguments.Unnamed
+    strEncryptValue = objArgs.Item(0)'引数で受け取り
+    
+    strDecryptValue = rsa.Decrypt(strEncryptValue, False)
+    WScript.Echo strDecryptValue
+  </script>
+</job>
