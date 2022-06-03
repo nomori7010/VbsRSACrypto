@@ -1,8 +1,8 @@
 <job>
-  <script language="VBScript" src="Class/RSACrypto.vbs"/>
+  <script language="VBScript" src="Class/VbsRSACrypto.vbs"/>
   <script language="VBScript">
     Set fs = CreateObject("Scripting.FilesystemObject")
-    Set rsa = new RSACrypto
+    Set rsa = new VbsRSACrypto
     'pem形式の鍵を生成したらこちらのサイトでXMLに変換して変数にセットする
     'https://superdry.apphb.com/tools/online-rsa-key-converter
     

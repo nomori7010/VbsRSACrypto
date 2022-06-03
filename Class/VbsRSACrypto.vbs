@@ -1,4 +1,4 @@
-Class RSACrypto
+Class VbsRSACrypto
     ' 定数
     ' ADODB.Stream
     Private adTypeBinary
@@ -39,7 +39,7 @@ Class RSACrypto
         csEUCJP = "euc-jp"
 
         '暗号化のためのライブラリ
-        Set objRsaCSP = CreateObject("System.Security.Cryptography.RSACryptoServiceProvider")
+        Set objRsaCSP = CreateObject("System.Security.Cryptography.VbsRSACryptoServiceProvider")
 
         'バイナリを扱うためのライブラリ
         Set objStream = CreateObject("ADODB.Stream")

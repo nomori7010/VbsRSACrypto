@@ -1,9 +1,9 @@
 <job>
-  <script language="VBScript" src="Class/RSACrypto.vbs"/>
+  <script language="VBScript" src="Class/VbsRSACrypto.vbs"/>
   <script language="VBScript">
     Set fs = CreateObject("Scripting.FilesystemObject")
     Set ts = fs.OpenTextFile("PublicKey.xml")
-    Set rsa = new RSACrypto
+    Set rsa = new VbsRSACrypto
     rsa.XmlPublicKey = ts.ReadAll
 
     Set objArgs = WScript.Arguments.Unnamed

@@ -107,7 +107,7 @@ Set objStream = CreateObject("ADODB.Stream")
 
 ' レジストリの「HKEY_CLASSES_ROOT\System.Security.Cryptography.～Provider」群を
 ' 見れば、使用できる暗号の種類が分かる。ここではRSA暗号化を指定している
-Set objCrypt = CreateObject("System.Security.Cryptography.RSACryptoServiceProvider")
+Set objCrypt = CreateObject("System.Security.Cryptography.VbsRSACryptoServiceProvider")
 
 
 ' Encrypt
